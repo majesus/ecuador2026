@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cuaderno del Clima de Andalucía — Observatorio Editorial</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Cormorant Garamond (Weight 300) as Nyght Serif equivalent & Inter/Manrope as Switzer equivalent -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* Colors */
+      --color-ink: #1a1a17;
+      --color-paper: #ffffff;
+      --color-ash: #5f5f5d;
+
+      /* Typography */
+      --font-display: 'Cormorant Garamond', 'Nyght Serif', ui-serif, Georgia, serif;
+      --font-sans: 'Plus Jakarta Sans', 'Switzer', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+      /* Typography Scale & Metrics */
+      --text-caption: 14px;
+      --text-body: 16px;
+      --text-subheading: 20px;
+      --text-heading-sm: 26px;
+      --text-heading: 48px;
+      --text-heading-lg: 62px;
+      --text-display: 72px;
+
+      /* Weights */
+      --font-weight-light: 300;
+      --font-weight-regular: 400;
+      --font-weight-medium: 500;
+      --font-weight-semibold: 600;
+
+      /* Spacing */
+      --spacing-8: 8px;
+      --spacing-16: 16px;
+      --spacing-24: 24px;
+      --spacing-32: 32px;
+      --spacing-40: 40px;
+      --spacing-48: 48px;
+      --spacing-64: 64px;
+      --spacing-96: 96px;
+      --spacing-120: 120px;
+
+      /* Layout */
+      --page-max-width: 1200px;
+      --section-gap: 64px;
+      --card-padding: 24px;
+
+      /* Border Radius */
+      --radius-cards: 6px;
+      --radius-pill: 1440px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--color-paper);
+      color: var(--color-ink);
+      font-family: var(--font-sans);
+      font-size: var(--text-body);
+      line-height: 1.5;
+      letter-spacing: 0.03em;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .container {
+      max-width: var(--page-max-width);
+      margin: 0 auto;
+      padding: 0 var(--spacing-24);
+    }
+
+    /* Header */
+    header {
+      background-color: var(--color-paper);
+      padding: var(--spacing-16) 0;
+    }
+
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .logo {
+      font-size: 16px;
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-ink);
+      letter-spacing: 0.03em;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 34px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--color-ink);
+      font-size: 15px;
+      font-weight: var(--font-weight-regular);
+      letter-spacing: 0.03em;
+      transition: opacity 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      opacity: 0.7;
+    }
+
+    /* Buttons */
+    .btn-pill-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--spacing-8);
+      background-color: var(--color-ink);
+      color: var(--color-paper);
+      padding: 12px 28px;
+      border-radius: var(--radius-pill);
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: var(--font-weight-medium);
+      letter-spacing: 0.03em;
+      border: 1px solid var(--color-ink);
+      cursor: pointer;
+      transition: opacity 0.2s ease;
+    }
+
+    .btn-pill-primary:hover {
+      opacity: 0.9;
+    }
+
+    .btn-pill-ghost {
+      display: inline-flex;
+      align-items: center;
+      background-color: transparent;
+      color: var(--color-ink);
+      padding: 12px 24px;
+      border-radius: var(--radius-pill);
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: var(--font-weight-medium);
+      letter-spacing: 0.03em;
+      border: 1px solid var(--color-ink);
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    .btn-pill-ghost:hover {
+      background-color: rgba(26, 26, 23, 0.04);
+    }
+
+    /* Hero Section */
+    .hero {
+      padding-top: var(--spacing-48);
+      padding-bottom: var(--spacing-64);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--spacing-48);
+      align-items: center;
+    }
+
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .eyebrow {
+      font-size: var(--text-caption);
+      font-weight: var(--font-weight-medium);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--color-ink);
+      margin-bottom: var(--spacing-16);
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: var(--text-display);
+      font-weight: var(--font-weight-light);
+      line-height: 1.05;
+      letter-spacing: 0.01em;
+      color: var(--color-ink);
+      margin-bottom: var(--spacing-24);
+    }
+
+    .hero-subtitle {
+      font-size: var(--text-body);
+      color: var(--color-ash);
+      line-height: 1.5;
+      letter-spacing: 0.03em;
+      margin-bottom: var(--spacing-32);
+      max-width: 480px;
+    }
+
+    .hero-image-wrap {
+      width: 100%;
+      height: 520px;
+      overflow: hidden;
+      background-color: #f2f2ef;
+    }
+
+    .hero-image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: grayscale(15%) contrast(102%);
+    }
+
+    /* Stat Strip */
+    .stat-strip {
+      border-top: none;
+      border-bottom: none;
+      margin-bottom: var(--spacing-64);
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-8);
+      padding: var(--spacing-24) var(--spacing-32);
+      border-left: 1px solid var(--color-ash);
+    }
+
+    .stat-item:first-child {
+      border-left: none;
+      padding-left: 0;
+    }
+
+    .stat-item svg {
+      width: 16px;
+      height: 16px;
+      stroke: var(--color-ink);
+      stroke-width: 1.5px;
+      fill: none;
+    }
+
+    .stat-text {
+      font-size: 15px;
+      font-weight: var(--font-weight-regular);
+      color: var(--color-ink);
+      line-height: 1.5;
+    }
+
+    /* Feature Row */
+    .section-gap {
+      margin-bottom: var(--section-gap);
+    }
+
+    .feature-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--spacing-48);
+      align-items: center;
+    }
+
+    .feature-heading {
+      font-family: var(--font-display);
+      font-size: var(--text-heading);
+      font-weight: var(--font-weight-light);
+      line-height: 1.1;
+      letter-spacing: 0.01em;
+      color: var(--color-ink);
+      margin-bottom: var(--spacing-32);
+    }
+
+    .bullet-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-24);
+    }
+
+    .bullet-item {
+      display: flex;
+      gap: var(--spacing-16);
+      align-items: flex-start;
+    }
+
+    .bullet-icon {
+      width: 16px;
+      height: 16px;
+      stroke: var(--color-ink);
+      stroke-width: 1.5px;
+      fill: none;
+      margin-top: 4px;
+      flex-shrink: 0;
+    }
+
+    .bullet-content h4 {
+      font-size: var(--text-subheading);
+      font-weight: var(--font-weight-medium);
+      color: var(--color-ink);
+      line-height: 1.3;
+      margin-bottom: 4px;
+    }
+
+    .bullet-content p {
+      font-size: var(--text-body);
+      color: var(--color-ash);
+      line-height: 1.5;
+    }
+
+    /* Mockup Container (Ink Plate Surface) */
+    .mockup-plate {
+      background-color: var(--color-ink);
+      border-radius: var(--radius-cards);
+      padding: var(--spacing-32);
+    }
+
+    .mockup-card {
+      background-color: var(--color-paper);
+      border-radius: var(--radius-cards);
+      padding: var(--card-padding);
+      border: 1px solid var(--color-ash);
+    }
+
+    .chat-pill {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border: 1px solid var(--color-ash);
+      border-radius: var(--radius-pill);
+      padding: 8px 16px;
+      margin-bottom: var(--spacing-24);
+    }
+
+    .chat-pill span {
+      font-size: var(--text-caption);
+      color: var(--color-ash);
+    }
+
+    .chat-pill .send-circle {
+      width: 24px;
+      height: 24px;
+      background-color: var(--color-ink);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .chat-pill .send-circle svg {
+      width: 12px;
+      height: 12px;
+      stroke: var(--color-paper);
+      stroke-width: 2;
+      fill: none;
+    }
+
+    .task-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-16);
+    }
+
+    .task-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #ededeb;
+    }
+
+    .task-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+      opacity: 0.5;
+    }
+
+    .task-title {
+      font-size: 15px;
+      font-weight: var(--font-weight-medium);
+      color: var(--color-ink);
+    }
+
+    .task-subtitle {
+      font-size: var(--text-caption);
+      color: var(--color-ash);
+    }
+
+    .status-badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      font-size: 12px;
+      font-weight: var(--font-weight-medium);
+      background-color: #ecece9;
+      color: var(--color-ink);
+      letter-spacing: 0.03em;
+    }
+
+    /* Workflow Cards */
+    .section-header {
+      margin-bottom: var(--spacing-40);
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: var(--text-heading);
+      font-weight: var(--font-weight-light);
+      line-height: 1.1;
+      letter-spacing: 0.01em;
+      color: var(--color-ink);
+    }
+
+    .workflow-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--spacing-24);
+    }
+
+    .workflow-card {
+      background-color: var(--color-paper);
+      border-radius: var(--radius-cards);
+      padding: var(--card-padding);
+      border: 1px solid var(--color-ash);
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-16);
+    }
+
+    .workflow-card-preview {
+      background-color: var(--color-ink);
+      border-radius: 4px;
+      padding: var(--spacing-16);
+      color: var(--color-paper);
+      min-height: 120px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .workflow-card-preview .tag {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      opacity: 0.8;
+    }
+
+    .workflow-card-preview .metric {
+      font-family: var(--font-display);
+      font-size: var(--text-heading-sm);
+      font-weight: var(--font-weight-light);
+    }
+
+    .workflow-card .card-eyebrow {
+      font-size: var(--text-caption);
+      font-weight: var(--font-weight-medium);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--color-ink);
+    }
+
+    .workflow-card .card-title {
+      font-family: var(--font-display);
+      font-size: var(--text-heading-sm);
+      font-weight: var(--font-weight-light);
+      line-height: 1.2;
+      color: var(--color-ink);
+    }
+
+    .workflow-card .card-body {
+      font-size: var(--text-body);
+      color: var(--color-ash);
+      line-height: 1.5;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--color-ash);
+      padding: var(--spacing-64) 0;
+      margin-top: var(--spacing-96);
+    }
+
+    .footer-grid {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .footer-brand {
+      font-family: var(--font-display);
+      font-size: var(--text-heading-sm);
+      font-weight: var(--font-weight-light);
+      color: var(--color-ink);
+    }
+
+    .footer-note {
+      font-size: var(--text-caption);
+      color: var(--color-ash);
+      letter-spacing: 0.03em;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid, .feature-row, .workflow-grid, .stat-grid {
+        grid-template-columns: 1fr;
+      }
+      .stat-item {
+        border-left: none;
+        border-top: 1px solid var(--color-ash);
+        padding: var(--spacing-16) 0;
+      }
+      .stat-item:first-child {
+        border-top: none;
+      }
+      .hero-title {
+        font-size: 48px;
+      }
+      .nav-links {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header>
+    <div class="container nav-container">
+      <a href="#" class="logo">Cuaderno Andaluz</a>
+      <ul class="nav-links">
+        <li><a href="#microclimas">Microclimas</a></li>
+        <li><a href="#vientos">Régimen de Vientos</a></li>
+        <li><a href="#anuario">Anuario Térmico</a></li>
+      </ul>
+      <a href="#suscripcion" class="btn-pill-ghost">Consultar boletín</a>
+    </div>
+  </header>
+
+  <!-- Hero Section (50/50 split) -->
+  <main class="container">
+    <section class="hero">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <span class="eyebrow">Edición Meteorológica · Trimestre IV</span>
+          <h1 class="hero-title">Luz continua, solana y niebla atlántica.</h1>
+          <p class="hero-subtitle">
+            Un registro tipográfico y sereno sobre las transiciones térmicas del sur peninsular: desde los olivares del Guadalquivir hasta las cumbres nevadas de Sierra Nevada.
+          </p>
+          <a href="#explorar" class="btn-pill-primary">
+            Explorar cartografía
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+        </div>
+        <div class="hero-image-wrap">
+          <!-- Warm editorial photograph representing southern landscape -->
+          <img src="https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=1200&q=80" alt="Paisaje seco y olivos bajo la luz andaluza">
+        </div>
+      </div>
+    </section>
+
+    <!-- Stat Strip (3 Columns with hairline dividers) -->
+    <section class="stat-strip">
+      <div class="stat-grid">
+        <div class="stat-item">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          <div class="stat-text">Más de 2.800 horas de sol anuales computadas en el litoral andaluz.</div>
+        </div>
+        <div class="stat-item">
+          <svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>
+          <div class="stat-text">Oscilación estacional extrema de 44°C en campiña a registros bajo cero en cumbres.</div>
+        </div>
+        <div class="stat-item">
+          <svg viewBox="0 0 24 24"><path d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2"></path></svg>
+          <div class="stat-text">Dos fachadas marinas determinantes: levante seco y poniente húmedo.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Feature Row: Editorial Text + Dark Surface Mockup -->
+    <section class="section-gap" id="vientos">
+      <div class="feature-row">
+        <div>
+          <span class="eyebrow">Dinámica atmosférica</span>
+          <h2 class="feature-heading">El pulso del viento sobre el Estrecho.</h2>
+          <ul class="bullet-list">
+            <li class="bullet-item">
+              <svg class="bullet-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+              <div class="bullet-content">
+                <h4>Levante mediterráneo</h4>
+                <p>Masa de aire canalizada y comprimida que eleva la temperatura y satura de bruma las costas de Tarifa y Algeciras.</p>
+              </div>
+            </li>
+            <li class="bullet-item">
+              <svg class="bullet-icon" viewBox="0 0 24 24"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path></svg>
+              <div class="bullet-content">
+                <h4>Poniente atlántico</h4>
+                <p>Aporte limpio y templado que limpia las cuencas bajas del Guadalquivir y modera las tardes de estío.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="mockup-plate">
+          <div class="mockup-card">
+            <div class="chat-pill">
+              <span>Consultar índice bioclimático regional...</span>
+              <div class="send-circle">
+                <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+              </div>
+            </div>
+            <div class="task-list">
+              <div class="task-item">
+                <div>
+                  <div class="task-title">Valle del Guadalquivir · Campiña</div>
+                  <div class="task-subtitle">Régimen termomediterráneo interior</div>
+                </div>
+                <span class="status-badge">Estable</span>
+              </div>
+              <div class="task-item">
+                <div>
+                  <div class="task-title">Sierra de Grazalema</div>
+                  <div class="task-subtitle">Pluviometría pluvisilva superior a 2.000 mm</div>
+                </div>
+                <span class="status-badge">Húmedo</span>
+              </div>
+              <div class="task-item">
+                <div>
+                  <div class="task-title">Desierto de Tabernas</div>
+                  <div class="task-subtitle">Índice de aridez semiárido subdesértico</div>
+                </div>
+                <span class="status-badge">Árido</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Workflow Cards (3-column) -->
+    <section class="section-gap" id="microclimas">
+      <div class="section-header">
+        <span class="eyebrow">Tipologías territoriales</span>
+        <h2 class="section-title">Tres realidades en un solo mapa.</h2>
+      </div>
+
+      <div class="workflow-grid">
+        <div class="workflow-card">
+          <div class="workflow-card-preview">
+            <span class="tag">Sector Subbético</span>
+            <div class="metric">1.200 m s.n.m.</div>
+          </div>
+          <span class="card-eyebrow">Montaña</span>
+          <h3 class="card-title">Inviernos de escarcha</h3>
+          <p class="card-body">Las cordilleras béticas frenan la influencia marítima, originando heladas nocturnas prolongadas y nieves en Cazorla y Mulhacén.</p>
+        </div>
+
+        <div class="workflow-card">
+          <div class="workflow-card-preview">
+            <span class="tag">Costa Tropical & Sol</span>
+            <div class="metric">19.5 °C media</div>
+          </div>
+          <span class="card-eyebrow">Litoral</span>
+          <h3 class="card-title">Microclima subtropical</h3>
+          <p class="card-body">Al abrigo de Sierra Nevada, el litoral granadino y malagueño conserva inviernos benignos propicios para el cultivo de chirimoya y mango.</p>
+        </div>
+
+        <div class="workflow-card">
+          <div class="workflow-card-preview">
+            <span class="tag">Depresión Bética</span>
+            <div class="metric">Sombra térmica</div>
+          </div>
+          <span class="card-eyebrow">Interior</span>
+          <h3 class="card-title">Canícula estival</h3>
+          <p class="card-body">Las llanuras de Sevilla y Córdoba experimentan la insolación más intensa de Europa occidental durante los meses centrales del año.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-grid">
+        <div class="footer-brand">Cuaderno del Clima de Andalucía</div>
+        <div class="footer-note">Publicación tipográfica independiente · Impreso en registro monocromo cálido</div>
+      </div>
+    </footer>
+  </main>
+
+</body>
+</html>
